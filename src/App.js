@@ -103,7 +103,7 @@ const App = () => {
     <h1>Name Registration</h1>
             <p>Check for availability and register your DERO name</p>
             <p>Remember names must be 6 characters or longer. This website will tell you "moon" is available but that's a lie. It's not enough characters.</p>
-            <p>Emojis and spaces and stuff are allowed, go crazy!</p>
+            <p>Names are CASE-sensitive. "Apollo" is not the same as "apollo". Numbers, spaces, special characters, and emojis are allowed.</p>
             <a href="https://chrome.google.com/webstore/detail/dero-rpc-bridge/nmofcfcaegdplgbjnadipebgfbodplpd">Oh and you'll need to download this extension</a>
             
             
