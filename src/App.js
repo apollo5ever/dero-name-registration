@@ -30,7 +30,7 @@ const App = () => {
   }, [])
 
 
-  //------------------CEO Functions ---------------------------------
+  //------------------WALLET Functions ---------------------------------
  
  
   const register = React.useCallback(async (event) => {
@@ -48,6 +48,33 @@ const App = () => {
     		"name": "name",
     		"datatype": "S",
     		"value": event.target.name.value
+    	}]
+    }))
+
+    console.log(err)
+    console.log(res)
+  }, [])
+
+  const transfer = React.useCallback(async (event) => {
+    event.preventDefault();
+    const deroBridgeApi = deroBridgeApiRef.current
+    const [err, res] = await to(deroBridgeApi.wallet('start-transfer', {
+    	"scid": "0000000000000000000000000000000000000000000000000000000000000001",
+    	"ringsize": 2,
+    	"sc_rpc": [{
+    		"name": "entrypoint",
+    		"datatype": "S",
+    		"value": "TransferOwnership"
+    	},
+    	{
+    		"name": "name",
+    		"datatype": "S",
+    		"value": event.target.name.value
+    	},
+        {
+    		"name": "newowner",
+    		"datatype": "S",
+    		"value": event.target.address.value
     	}]
     }))
 
@@ -104,32 +131,47 @@ const App = () => {
             <p>Check for availability and register your DERO name</p>
             <p>Remember names must be 6 characters or longer. This website will tell you "moon" is available but that's a lie. It's not enough characters.</p>
             <p>Names are CASE-sensitive. "Apollo" is not the same as "apollo". Numbers, spaces, special characters, and emojis are allowed.</p>
+            <p><i>New!</i> Now you can also transfer a name you already own to another wallet address.</p>
+            
             <a href="https://chrome.google.com/webstore/detail/dero-rpc-bridge/nmofcfcaegdplgbjnadipebgfbodplpd">Oh and you'll need to download this extension</a>
             
             
-            <h1> Check Availability </h1>
+            
+            <div className="function-container">
 
             <div className="function">
-    
+    <h3>Check Availability</h3>
+    <div className="check">
     
     <form onSubmit={checkName}>
-      <p>Name</p>
-      <input id="name" type="text"/>
+      <input placeholder="name" id="name" type="text"/>
       <button type={"submit"}>Check Availability</button>
     </form>
     {availability}
     </div>
+    </div>
 
-<h1> Register Name </h1>
+
     <div className="function">
-    
+      <h3>Register Name</h3>
   <form onSubmit={register}>
-    <p>Name</p>
-    <input id="name" type="text" />
+    <input placeholder="name" id="name" type="text" />
     <button type={"submit"}>Register</button>
   </form>
   
     
+    </div>
+
+    <div className="function">
+      <h3><i>New!</i> Transfer Name</h3>
+  <form onSubmit={transfer}>
+    <input placeholder="name" id="name" type="text" />
+    <input placeholder="address" id="address" type="text" />
+    <button type={"submit"}>Transfer</button>
+  </form>
+  
+    
+    </div>
     </div>
 
     

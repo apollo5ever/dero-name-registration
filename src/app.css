@@ -1,7 +1,21 @@
-div {
+.App {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    background:rgb(180, 133, 243)
+    height: 100vh;
+    }
+
+body {
+    background-color: #b1d6f5;
+    text-align:center;
+}
+
+.function-container {
+    display: grid;
+    gap: 50px 100px;
+    grid-template-columns: auto auto auto;
+    
+    padding: 10px;
 }
 
 .function {
@@ -9,12 +23,18 @@ div {
     border-radius: 5%;
     margin: 10px;
     padding: 10px;
-   border-width: 20px;
+   border-width: 1px;
    border-style:inset;
    border-color:blue;
+   max-width:500px;
+   max-height:500px;
+  
+   
+   
 }
 
 a {
     margin:30px;
     background:rgb(238, 234, 173)
 }
+
